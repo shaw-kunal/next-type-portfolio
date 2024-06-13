@@ -15,7 +15,7 @@ const routes: routeType[] = [
     {
         id: 0,
         title: "About",
-        link: '/about'
+        link: '/'
     }, {
         id: 1,
         title: "Project",
@@ -39,7 +39,7 @@ const Navbar = () => {
     const [activeLink, setActiveLink] = useState<number>(0)
 
     return (
-        <div className='lg:static flex justify-between h-16 items-center fixed  top-0 left-0 w-full  z-50 bg-eerie-black-2 '>
+        <div className='lg:static flex justify-between h-16 items-center fixed  bottom-0  w-full z-50 bg-eerie-black-2 '>
             <h1 className="hidden lg:block  text-xl mx-2 w-[200px]  text-center relative  z-50">{routes[activeLink].title}
 
                 <motion.div
@@ -61,11 +61,13 @@ const Navbar = () => {
             </div>
 
 
-            <div className='flex lg:hidden flex-1 border-purple rounded  gap-1 h-full items-center px-2 justify-between    z-50'>
+            <div className='flex lg:hidden flex-1 border-purple rounded  gap-1 w-full h-full items-center px-2 justify-between    z-50'>
                 {
                     routes.map((route) =>   <Link className='relative' key={route.id}  href={route.link} onClick={() => setActiveLink(route.id)}>{route.title}
                      {activeLink ===route.id ? (
-                <motion.div className="absolute -bottom-1 left-0 right-0  h-[1px] bg-white   z-50" layoutId="underline" />
+                        <>
+                {/* <motion.div className="absolute -bottom-1 left-0 right-0  h-[1px] bg-white   z-50" layoutId="underline" /> */}
+                        </>
               ) : null}
                     </Link>)
                 }

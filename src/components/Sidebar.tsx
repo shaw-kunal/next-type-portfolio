@@ -36,7 +36,7 @@ const Sidebar = () => {
     initial={{ maxHeight: isLargeScreen ? '1000px' : '150px' }}
       animate={isLargeScreen ? {} : { maxHeight: showMore ? '1000px' : '150px' }}
       transition={isLargeScreen ? {} : { duration: 0.8, ease: 'easeIn' }}
-      className={`${showMore ? 'h-fit' : "h-32"} w-full   bg-eerie-black-2 overflow-hidden  rounded-xl border-purple p-4 relative px-8 transition-all duration-150 ease-in-out lg:min-h-fit `}>
+      className={`${showMore ? 'h-fit' : "h-32"} w-full relative  bg-eerie-black-2 overflow-hidden  rounded-xl border-purple p-4 relative px-8 transition-all duration-150 ease-in-out lg:min-h-fit `}>
       <div className='flex items-center gap-4 w-full'>
         <div className='relative !w-[80px] h-[80px]  rounded-full overflow-hidden '>
           <Image fill src="https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg" alt="" />
@@ -145,6 +145,7 @@ const Sidebar = () => {
     </motion.div>
 
 
+    <div className="absolute left-0 right-0 z-10 h-[150px] w-[400px] rotate-[0deg] transform rounded-full bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 blur-[150px] top-[-150px]" ></div>
 
 
     </motion.div>
