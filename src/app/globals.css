@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotation {
+  0% {
+    --gradient-anle: 0deg;
+  }
+
+  100% {
+    --gradient-angle: 360deg
+  }
+
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -18,54 +35,56 @@
     --onyx: hsl(240, 1%, 17%);
     --eerie-black-1: hsl(240, 2%, 13%);
     /* --eerie-black-2: hsl(240, 2%, 12%); */
-        --eerie-black-2: hsl(240, 4%, 5%);
+    --eerie-black-2: hsl(240, 4%, 5%);
 
     --smoky-black: hsl(0, 0%, 0%);
     --white-1: hsl(0, 0%, 100%);
     --white-2: hsl(0, 0%, 98%);
-    --border-gradient-onyx:linear-gradient( to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50% );
-    --border-gradient-bright-onyx:linear-gradient( to top, hsl(0, 1%, 55%) 10%, hsla(0, 0%, 25%, 0) 50% );
-    --shadow-1:-4px 8px 24px hsla(0, 0%, 0%, 0.25);
-
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-    
-}
-
-@layer utilities {
-    
-  .border-jet{
-    border-color: var(--jet);
+    --border-gradient-onyx: linear-gradient(to bottom right, hsl(0, 0%, 25%) 0%, hsla(0, 0%, 25%, 0) 50%);
+    --border-gradient-bright-onyx: linear-gradient(to top, hsl(0, 1%, 55%) 10%, hsla(0, 0%, 25%, 0) 50%);
+    --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.25);
+    --accent-brand: #7118d1;
   }
 
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom,
+        transparent,
+        rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 
-  .flex-2{
-    flex:2;
   }
-  .bg-jet{
-    background-color: var(--jet);
-  }
-  .bg-onyx{
-    background-color: var(--onyx);
-  }
-  .bg-eerie-black-2{
-    background-color: var(--eerie-black-2);
-  }
-  .border-purple{
-    border: 1px solid var(--jet);
-  }
-  .font-gray{
-    color:var(--eerie-black-2)
-  }
-  
+
+  @layer utilities {
+
+    .border-jet {
+      border-color: var(--jet);
+    }
+
+
+    .flex-2 {
+      flex: 2;
+    }
+
+    .bg-jet {
+      background-color: var(--jet);
+    }
+
+    .bg-onyx {
+      background-color: var(--onyx);
+    }
+
+    .bg-eerie-black-2 {
+      background-color: var(--eerie-black-2);
+    }
+
+    .border-purple {
+      border: 1px solid var(--jet);
+    }
+
+    .font-gray {
+      color: var(--eerie-black-2)
+    }
+
     .icon-box {
       position: relative;
       background: var(--border-gradient-onyx);
@@ -79,34 +98,241 @@ body {
       border: 1px solid var(--onyx);
       z-index: 1;
       cursor: pointer;
+    }
+
+    .social-media-link-box {
+      position: relative;
+      background: var(--border-gradient-bright-onyx);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: var(--shadow-1);
+      border: 1px solid var(--onyx);
+      z-index: 1;
+      cursor: pointer;
+
+    }
+
+    .dotted-background {
+      background-image: radial-gradient(#545252d5 5%, #0000001f 15%);
+      background-color: #000;
+      position: fixed !important;
+      background-size: 20px 20px;
+    }
+
+    .border-blue-850 {
+      --tw-border-opacity: 1;
+      border-color: rgb(31 34 60/var(--tw-border-opacity));
+    }
+
+    .timeline-item {
+      /* background-color: yellow; */
+    }
+
+    .timeline-item::after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      height: 6px;
+      width: 6px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px var(--jet);
+    }
+
+    .timeline-item:not(:last-child)::before {
+      content: "";
+      position: absolute;
+      top: -21px;
+      width: 1px;
+      height: calc(100% + 70px);
+      background: var(--jet);
+      z-index: -2;
+
+    }
+
+
+    .skill-container {
+      position: relative;
+      margin: 20px;
+      border-radius: 10px;
+
+
+    }
+
+    .skill-container::before,
+    .skill-container:after {
+      content: "";
+      position: absolute;
+      inset: -0.1rem;
+      background: conic-gradient(from var(--gradient-angle),
+          #000000d7,
+          #1111115d,
+          #979797de,
+          #1111115d,
+          #000000d7);
+      animation: rotation 10s linear infinite;
+      z-index: -1;
+      border-radius: inherit;
+    }
+
+    .skill-container::after {
+      filter: blur(1rem);
+
+    }
+
+    .skill-container>div {
+      z-index: 10;
+      border-radius: inherit;
+      padding: 20px;
+
+    }
+
+
+    .skill-line-bg {
+      /* From https://css.glass */
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+
+    }
+
+
+    .skill-fill-bg {
+      /* From https://css.glass */
+      background: rgb(223, 220, 220);
+      border-radius: 10px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      /* border:  */
+    }
+
+    .border-left-of-focus {
+
+      border-bottom: 2px;
+      border-bottom-right-radius: 12px;
+      border-left: 0;
+      border-right: 2px;
+      border-top: 0;
+      border-style: solid;
+      height: 50%;
+      left: calc(28.572% + 2px);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      width: 14.286%;
+      border-color: var(--accent-brand);
+
+    }
+
+    .border-focus {
+      border: 2px;
+      border-bottom: 0;
+      border-style: solid;
+      border-top-left-radius: 12px;
+      border-top-right-radius: 12px;
+      height: 50%;
+      left: 42.858%;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      width: 14.286%;
+      border-color: var(--accent-brand);
+
+    }
+
+    .border-right-of-focus {
+      border-bottom: 2px;
+      border-bottom-left-radius: 12px;
+      border-left: 2px;
+      border-right: 0;
+      border-top: 0;
+      border-color: var(--accent-brand);
+      border-style: solid;
+      height: 50%;
+      left: calc(57.144% - 2px);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      width: 14.286%;
+    }
+
+    .border-left-of-left-of-focus {
+      border: 0;
+      border-bottom: 2px;
+      border-bottom-left-radius: 12px;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to left, var(--accent-brand), #00000000);
+      border-style: solid;
+      height: 50%;
+      left: calc(14.286% + 2px);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      width: 14.286%;
+    }
+
+    .border-right-of-right-of-focus {
+      border: 0;
+      border-bottom: 2px;
+      border-bottom-right-radius: 12px;
+      border-image-slice: 1;
+      border-image-source: linear-gradient(to right, var(--accent-brand), #00000000);
+      border-style: solid;
+      height: 50%;
+      left: calc(71.43% - 2px);
+      pointer-events: none;
+      position: absolute;
+      top: 50%;
+      width: 14.286%;
+    }
+
+
+
+    @media (391px<=width <=1024px) {
+
+
+      .border-left-of-focus {
+        left: calc(15% + 2px);
+        width: 20%;
+      }
+
+      .border-focus {
+        left: 40%;
+        width: 20%;
+      }
+
+      .border-left-of-left-of-focus {
+        left: 2px;
+        width: 20%;      }
+
+      .border-right-of-right-of-focus {
+        left: calc(80% - 2px);
+        width: 20%;
+
+      }
+
+      .border-right-of-focus {
+        left: calc(65% - 2px);
+        width: 20%;
+      }
+    }
+
+    @media (391px<=width <=1024px) {
+
+      .border-focus {
+        left: 35%;
+        width: 30%;
+      }
+
+    }
+
   }
-
-  .social-media-link-box{
-    position: relative;
-    background: var(--border-gradient-bright-onyx);
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: var(--shadow-1);
-    border: 1px solid var(--onyx);
-    z-index: 1;
-    cursor: pointer;
- 
-  }
-
-  .dotted-background {
-    background-image: radial-gradient(#545252d5 5%, #0000001f 15%);
-    background-color: #000;
-    position: fixed !important;
-    background-size: 20px 20px;
-    
-  
 }
-}
-
-
-}
-

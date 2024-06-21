@@ -3,7 +3,7 @@ import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
 import { CalendarMonth, Email, Facebook, GitHub, Instagram, LinkedIn, LocationCity, Phone } from '@mui/icons-material';
-import { ceveat,shadows} from '@/app/utils/font';
+import { ceveat, shadows } from '@/app/utils/font';
 
 
 
@@ -32,11 +32,13 @@ const Sidebar = () => {
 
 
   return (
+
+
     <motion.div
-    initial={{ maxHeight: isLargeScreen ? '1000px' : '150px' }}
+      initial={{ maxHeight: isLargeScreen ? '1000px' : '150px' }}
       animate={isLargeScreen ? {} : { maxHeight: showMore ? '1000px' : '150px' }}
       transition={isLargeScreen ? {} : { duration: 0.8, ease: 'easeIn' }}
-      className={`${showMore ? 'h-fit' : "h-32"} w-full relative  bg-eerie-black-2 overflow-hidden  rounded-xl border-purple p-4 relative px-8 transition-all duration-150 ease-in-out lg:min-h-fit `}>
+      className={`${showMore ? 'h-fit' : "h-32"} w-full   bg-eerie-black-2 overflow-hidden  rounded-xl border-purple p-4 relative px-8 transition-all duration-150 ease-in-out lg:min-h-fit `}>
       <div className='flex items-center gap-4 w-full'>
         <div className='relative !w-[80px] h-[80px]  rounded-full overflow-hidden '>
           <Image fill src="https://img.freepik.com/premium-photo/graphic-designer-digital-avatar-generative-ai_934475-9292.jpg" alt="" />
@@ -51,11 +53,18 @@ const Sidebar = () => {
       </div>
 
       <div className='h-0 my-6 border-purple'></div>
-      <div className={` ${shadows} text-2xl bg-white w-fit border-purple rounded-full py-2 px-4 font-gray min-w-[300px]  text-center cursor-pointer hover:bg-gradient-to-t from-neutral-400 to-transparent hover:text-black mx-auto`}>Download Resume</div>
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 17 }}
+        className={` ${shadows} text-2xl bg-white w-fit border-purple rounded-full py-1 px-4 font-gray min-w-[300px]  text-center cursor-pointer hover:bg-gradient-to-t from-neutral-400 to-transparent hover:text-black mx-auto origin-center`}
+      >
+        Download Resume
+      </motion.div>
       <div className='h-0 my-6 border-purple'></div>
 
 
-      {/* //social media link */}
+      {/* // social media  */}
 
       <div className='flex flex-col md:flex-row  gap-3 lg:gap-4 flex-nowrap md:flex-wrap  md:justify-between'>
         <div className='flex  gap-3 md:w-[300px]'>
@@ -68,7 +77,7 @@ const Sidebar = () => {
           </div>
 
         </div>
-     
+
         <div className='flex  gap-3 md:w-[300px]'>
           <div className='icon-box' >
             <Phone width={12} />
@@ -106,49 +115,49 @@ const Sidebar = () => {
 
       </div>
       <div className='h-0 my-6 border-purple'></div>
-    
-
-    {/* //social media link */}
-
-    <motion.div 
-    className='flex gap-4'
-     initial={{
-      x:-50,
-     }}
-     transition={{
-      duration:.5
-     }}
-     
-     whileInView={{
-      x:0,
-     }}
-    
-    >
-         <div className='social-media-link-box' >
-            <GitHub  fontSize='large' />
-          </div>
-      
-          <div className='social-media-link-box' >
-            <Facebook  fontSize='large' />
-          </div>
 
 
-         <div className='social-media-link-box' >
-            <LinkedIn  fontSize='large' />
-          </div>
+      {/* //social media link  */}
+
+      <motion.div
+        className='flex gap-4'
+        initial={{
+          x: -50,
+        }}
+        transition={{
+          duration: .5
+        }}
+
+        whileInView={{
+          x: 0,
+        }}
+
+      >
+        <div className='social-media-link-box' >
+          <GitHub fontSize='large' />
+        </div>
+
+        <div className='social-media-link-box' >
+          <Facebook fontSize='large' />
+        </div>
 
 
-         <div className='social-media-link-box' >
-            <Instagram  fontSize='large' />
-          </div>
-          
+        <div className='social-media-link-box' >
+          <LinkedIn fontSize='large' />
+        </div>
+
+        <div className='social-media-link-box' >
+          <Instagram fontSize='large' />
+        </div>
+
+      </motion.div>
+
+
+      <div className="absolute left-0 right-0 z-10 h-[150px] w-[400px] rotate-[0deg] transform rounded-full bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 blur-[150px] top-[-150px]" ></div>
+
+
     </motion.div>
 
-
-    <div className="absolute left-0 right-0 z-10 h-[150px] w-[400px] rotate-[0deg] transform rounded-full bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 blur-[150px] top-[-150px]" ></div>
-
-
-    </motion.div>
 
 
   )

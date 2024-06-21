@@ -1,8 +1,9 @@
 "use client";
 import { AssignmentReturnTwoTone, Route } from '@mui/icons-material';
 import Link from 'next/link';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
+import { usePathname } from 'next/navigation';
 
 interface routeType {
     id: number,
@@ -24,7 +25,7 @@ const routes: routeType[] = [
     {
         id: 2,
         title: "Resume",
-        link: '/about'
+        link: '/resume'
     },
     {
         id: 3,
@@ -36,11 +37,20 @@ const routes: routeType[] = [
 const Navbar = () => {
 
 
-    const [activeLink, setActiveLink] = useState<number>(0)
+    const [activeLink, setActiveLink] = useState<number>(0);
+    
+    const path = usePathname();
+
+
+    useEffect(()=>{
+       setActiveLink(routes.find((route)=>route.title===path)?.id || 0)
+    },[])
+  
+     
 
     return (
         <div className='lg:static flex justify-between h-16 items-center fixed  bottom-0  w-full z-50 bg-eerie-black-2 '>
-            <h1 className="hidden lg:block  text-xl mx-2 w-[200px]  text-center relative  z-50">{routes[activeLink].title}
+            <h1 className="hidden lg:block  text-xl mx-2 w-[200px] text-center  relative  z-50">{routes[activeLink].title}
 
                 <motion.div
                           key={activeLink} // Add key to re-trigger animation
@@ -65,9 +75,7 @@ const Navbar = () => {
                 {
                     routes.map((route) =>   <Link className='relative' key={route.id}  href={route.link} onClick={() => setActiveLink(route.id)}>{route.title}
                      {activeLink ===route.id ? (
-                        <>
-                {/* <motion.div className="absolute -bottom-1 left-0 right-0  h-[1px] bg-white   z-50" layoutId="underline" /> */}
-                        </>
+                <motion.div className="absolute -bottom-1 left-0 right-0  h-[1px] bg-white   z-50" layoutId="underline" />
               ) : null}
                     </Link>)
                 }
