@@ -70,7 +70,7 @@ export default function Home() {
 
       {/* what i am doing */}
       <div className='mt-4'>
-        <h1 className="  text-xl mb-6 mt-4 mx-2  tracking-wider text-start relative  z-50">What I'm doing
+        <h1 className="text-xl mb-6 mt-4 mx-2  tracking-wider text-start relative  z-50">What   I&apos;m doing
 
           <motion.div
             initial={{ scaleX: 0 }}
