@@ -2,8 +2,9 @@
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { CalendarMonth, Email, Facebook, GitHub, Instagram, LinkedIn, LocationCity, Phone } from '@mui/icons-material';
-import { ceveat, shadows } from '@/app/utils/font';
+import { ArrowDownward, ArrowUpward, CalendarMonth, Email, Facebook, GitHub, Instagram, KeyboardArrowDown, KeyboardArrowUp, LinkedIn, LocationCity, Phone, Twitter } from '@mui/icons-material';
+import { ceveat } from '@/app/utils/font';
+import Link from 'next/link';
 
 
 
@@ -49,11 +50,11 @@ const Sidebar = () => {
         </div>
       </div>
       <div className="  block lg:hidden absolute top-0 right-0  rounded-bl-xl rounded-tr-xl px-2 cursor-pointer  border-purple hover:border-l-white hover:border-t-white hover:bg-gradient-to-r from-slate-400 to-transparent">
-        <span className='text-xs ' onClick={() => setShowMore(prev => !prev)}>show</span>
+        <span className='text-xs ' onClick={() => setShowMore(prev => !prev)}>{showMore?<KeyboardArrowDown/>:<KeyboardArrowUp/>}</span>
       </div>
 
       <div className='h-0 my-6 border-purple'></div>
-      <motion.div
+      {/* <motion.div
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         transition={{ type: 'spring', stiffness: 400, damping: 17 }}
@@ -61,7 +62,7 @@ const Sidebar = () => {
       >
         Download Resume
       </motion.div>
-      <div className='h-0 my-6 border-purple'></div>
+      <div className='h-0 my-6 border-purple'></div> */}
 
 
       {/* // social media  */}
@@ -73,7 +74,7 @@ const Sidebar = () => {
           </div>
           <div className='flex flex-col'>
             <span className='text-sm' > Email</span>
-            <span className={`${ceveat} text-gray-400  text-2xl`}>shawkunal3010@gmail.com</span>
+            <span className={`${ceveat} text-slate-400  text-2xl`}>shawkunal3010@gmail.com</span>
           </div>
 
         </div>
@@ -84,7 +85,7 @@ const Sidebar = () => {
           </div>
           <div className='flex flex-col'>
             <span className='text-sm' > Phone</span>
-            <span className={`${ceveat} text-gray-3d00  text-2xl`}>6289197569</span>
+            <span className={`${ceveat}  text-slate-400  text-2xl`}>6289197569</span>
           </div>
         </div>
 
@@ -96,7 +97,7 @@ const Sidebar = () => {
           </div>
           <div className='flex flex-col'>
             <span className='text-sm' > Birthday</span>
-            <span className={`${ceveat} text-gray-3d00  text-2xl`}>30th Oct,2001</span>
+            <span className={`${ceveat}  text-slate-400  text-2xl`}>30th Oct,2001</span>
           </div>
         </div>
 
@@ -107,7 +108,7 @@ const Sidebar = () => {
           </div>
           <div className='flex flex-col'>
             <span className='text-sm' > Current Location</span>
-            <span className={`${ceveat} text-gray-3d00  text-2xl`}>Surat,Gujarat</span>
+            <span className={`${ceveat}  text-slate-400 text-2xl`}>Surat,Gujarat</span>
           </div>
         </div>
 
@@ -133,29 +134,26 @@ const Sidebar = () => {
         }}
 
       >
-        <div className='social-media-link-box' >
+        <Link href="https://github.com/shaw-kunal"
+         target='_blank'
+        className='social-media-link-box' >
           <GitHub fontSize='large' />
-        </div>
-
-        <div className='social-media-link-box' >
-          <Facebook fontSize='large' />
-        </div>
-
-
-        <div className='social-media-link-box' >
+        </Link>
+        <Link href={"https://x.com/shawkunal3010"} className='social-media-link-box' >
+          <Twitter fontSize='large' />
+        </Link>
+        <Link 
+        href={"https://www.linkedin.com/in/shaw-kunal/"}
+         className='social-media-link-box' >
           <LinkedIn fontSize='large' />
-        </div>
-
-        <div className='social-media-link-box' >
+        </Link>
+        <Link
+         href={"https://www.instagram.com/kunal.official.shaw30/"}
+          className='social-media-link-box' >
           <Instagram fontSize='large' />
-        </div>
-
+        </Link>
       </motion.div>
-
-
       <div className="absolute left-0 right-0 z-10 h-[150px] w-[400px] rotate-[0deg] transform rounded-full bg-gradient-to-tl from-slate-800 via-violet-500 to-zinc-400 blur-[150px] top-[-150px]" ></div>
-
-
     </motion.div>
 
 

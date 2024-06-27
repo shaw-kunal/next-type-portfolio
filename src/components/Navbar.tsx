@@ -43,9 +43,11 @@ const Navbar = () => {
 
 
     useEffect(()=>{
-       setActiveLink(routes.find((route)=>route.title===path)?.id || 0)
+   const route:routeType =   routes.find((route)=>route.link===path) || routes[0]
+   setActiveLink(route?.id)
     },[])
-  
+
+
      
 
     return (
@@ -53,7 +55,7 @@ const Navbar = () => {
             <h1 className="hidden lg:block  text-xl mx-2 w-[200px] text-center  relative  z-50">{routes[activeLink].title}
 
                 <motion.div
-                          key={activeLink} // Add key to re-trigger animation
+                          key={activeLink} 
                           initial={{ scaleX: 0 }}
                           animate={{ scaleX: 1 }}
                           transition={{ duration: 1 }}

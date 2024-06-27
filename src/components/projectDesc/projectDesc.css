@@ -6,19 +6,23 @@
 
 .feature-grid {
     position: relative;
-    height: 320px;
+    height: 260px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     gap: 10px;
     transform-origin: center;
 }
-.feature-grid-left{
+.feature-transform-left{
     transform: rotateY(-46deg);
 }
- .feature-grid-right{
+ .feature-transform-right{
     transform: rotateY(+46deg);
  }
+
+ .feature-transform-none{
+  transform: rotateY(0deg);
+}
 
 .feature-grid>a {
     border-radius: 0.75em;
@@ -58,4 +62,8 @@
 .feature-grid > :nth-child(6) {
   grid-column: 2 / span 2;
   grid-row: 3 / span 4;
+}
+
+.rtl{
+  direction: rtl;
 }

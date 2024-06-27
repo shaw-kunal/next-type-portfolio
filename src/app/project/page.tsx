@@ -1,24 +1,35 @@
 'use client';
-// Swiper components, modules and styles
 import { Autoplay, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { technologies, technologiesSliderData } from "@/constant";
+import { project1, project2, technologies, technologiesSliderData } from "@/constant";
 import { useRef, useState } from "react";
 import { ceveat, shadows } from '@/app/utils/font';
 import Image from "next/image";
+import ProjectDesc from "../../components/projectDesc/ProjectDesc";
 
 
 const Portfolio = () => {
   return (
     <div className="p-2 min-h-[200px] ">
 
-      <h1 className="text-lg ml-5 font-medium  mt-10">Used Tech in projects</h1>
+      <h1 className="text-lg ml-5 font-medium  mt-10">Used Tech In My Projects-</h1>
       <div className="mt-10">
       <TechnologySlider item={technologiesSliderData} />
     </div>
+
+    <ProjectDesc 
+    title="Reluctant money" 
+     desc={
+      "Developed a MERN stack web application, Reluctant Money.in, for selling courses with a responsive UI, secure payment gateway, admin panel, and data visualization tools. Ensured seamless performance and cross-browser compatibility. "
+     }
+    arr={project1}/>
+    <ProjectDesc title="Blockchain based e-voting system" 
+    desc="Developed a web-based online voting system using blockchain technology to ensure secure, transparent, and tamper-proof elections. Implemented a user-friendly interface and robust backend for seamless voting and result verification."
+    arr={project2} left={false}/>
+    {/* <ProjectDesc title="" arr={project1}/> */}
     </div>
   )
 }
@@ -36,9 +47,8 @@ const TechnologySlider = ({ item }: technologiesProps) => {
     const currentbreakpoint = swiper.currentBreakpoint;
     const slidePerViewObj = swiper.params.breakpoints[currentbreakpoint]
 
-    setActiveIndex((swiper.realIndex + Math.floor(slidePerViewObj.slidesPerView / 2)) % technologiesSliderData.length);
+    setActiveIndex((swiper.realIndex + Math.floor((slidePerViewObj?.slidesPerView || 0 )/ 2)) % technologiesSliderData.length);
   };
-  console.log(technologiesSliderData[activeIndex].title)
   return (
     <div className="flex gap-2 relative">
       <Swiper
@@ -46,7 +56,6 @@ const TechnologySlider = ({ item }: technologiesProps) => {
         autoplay={true}
         spaceBetween={5}
         loop={true}
-        // allowTouchMove={false}
         onSlideChange={handleSlideChange}
         modules={[Autoplay, Navigation, Pagination]}
         breakpoints={{
@@ -63,16 +72,16 @@ const TechnologySlider = ({ item }: technologiesProps) => {
           item.map((item: technologies, i: number) => (
             <SwiperSlide key={i}>
               <div className={`flex items-center justify-center gap-2 h-[80px]    transition-all ease-in-out `}>
-               <div className="w-[70%] md:w-10 md:h-10 shadow-md h-[50px] relative">
+               <div className="w-[70%] md:w-10 md:h-10 shadow-md h-[50px] text-white relative">
                 <Image
                 fill
-                  className={`md:rounded-full rounded-md  ${item.id - 1 === activeIndex ? `brightness-125 bg-white	` : '  grayscale'} `}
+                  className={` hidden md:block md:rounded-full rounded-md  ${item.id - 1 === activeIndex ? `brightness-125 bg-white	` : '  grayscale'} `}
                   src={item.img}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                  alt="slider img" />
+                  alt={item.title} />
 
                   </div>
-                <span className={`hidden md:block ${item.id - 1 === activeIndex ? `${ceveat} text-[30px] text-purple-500` : 'text-lg  '} `}> {item.title}</span>
+                <span className={`${item.id - 1 === activeIndex ? `${ceveat} text-[30px] text-purple-500` : 'text-lg  '} `}> {item.title}</span>
               </div>
             </SwiperSlide>
           ))

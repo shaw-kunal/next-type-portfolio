@@ -223,7 +223,7 @@
       border-top: 0;
       border-style: solid;
       height: 50%;
-      left: calc(28.572% + 2px);
+      left: calc(26.572% + 1px);
       pointer-events: none;
       position: absolute;
       top: 50%;
@@ -239,11 +239,11 @@
       border-top-left-radius: 12px;
       border-top-right-radius: 12px;
       height: 50%;
-      left: 42.858%;
+      left: 40.858%;
       pointer-events: none;
       position: absolute;
       top: 0;
-      width: 14.286%;
+      width: 18.286%;
       border-color: var(--accent-brand);
 
     }
@@ -257,7 +257,7 @@
       border-color: var(--accent-brand);
       border-style: solid;
       height: 50%;
-      left: calc(57.144% - 2px);
+      left: calc(59.144% - 2px);
       pointer-events: none;
       position: absolute;
       top: 50%;
@@ -272,7 +272,7 @@
       border-image-source: linear-gradient(to left, var(--accent-brand), #00000000);
       border-style: solid;
       height: 50%;
-      left: calc(14.286% + 2px);
+      left: calc(12.286% + 2px);
       pointer-events: none;
       position: absolute;
       top: 50%;
@@ -287,7 +287,7 @@
       border-image-source: linear-gradient(to right, var(--accent-brand), #00000000);
       border-style: solid;
       height: 50%;
-      left: calc(71.43% - 2px);
+      left: calc(73.43% - 2px);
       pointer-events: none;
       position: absolute;
       top: 50%;
@@ -332,6 +332,27 @@
         width: 30%;
       }
 
+    }
+
+    @media screen and (max-width:391px) {
+      .border-left-of-focus{
+        left:2px;
+        width: 33.33%;
+      }
+      .border-left-of-left-of-focus{
+        display: none;
+      }
+      .border-focus{
+        width: 33.33%;
+        left:33.33%
+      }
+      .border-right-of-focus{
+        left: calc(66.66% - 2px);
+        width: 33.33%;
+      }
+      .border-right-of-right-of-focus{
+        display: none;
+      }
     }
 
   }

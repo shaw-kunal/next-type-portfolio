@@ -1,5 +1,5 @@
 'use client';
-import { Add, Build, Camera, Code } from '@mui/icons-material';
+import { Add, Build, Camera, CastForEducation, Code, Http, Https } from '@mui/icons-material';
 import { Reorder, motion, useMotionValue } from 'framer-motion';
 import { ReactNode, useState } from 'react';
 
@@ -12,32 +12,32 @@ type ItemsType = {
 
 const initialItems: ItemsType[] = [{
   id: 1,
-  title: "frontend developer1",
-  desc: "A function returned from this callback will fire when the element leaves the viewport.",
+  title: "Web Design",
+  desc: "The most modern and high-quality design made at a professional level..",
   icon: <Camera fontSize={'large'} />
 },
 {
   id: 2,
-  title: "backend developer3",
-  desc: "A function returned from this callback will fire when the element leaves the viewport.",
+  title: "Web Development",
+  desc: "High-quality development of sites at the professional level.",
   icon: <Code fontSize='large' />
 },
 {
   id: 3,
-  title: "Ui/ux developer",
-  desc: "A function returned from this callback will fire when the element leaves the viewport.",
+  title: "Coding",
+  desc: "Optimize the Code and able to solve complex problem.",
   icon: <Build fontSize='large' />
 }, {
   id: 4,
-  title: "Bi/ux developer",
-  desc: "A function returned from this callback will fire when the element leaves the viewport.",
-  icon: <Build fontSize='large' />
+  title: "API Development",
+  desc: "Developing robust and scalable APIs for seamless integration.",
+  icon: <Https fontSize='large' />
 },
 {
   id: 5,
-  title: "AI/Ux developer",
-  desc: "A function returned from this callback will fire when the element leaves the viewport.",
-  icon: <Build fontSize='large' />
+  title: "Teaching",
+  desc: "facilitating student engagement and fostering a positive learning environment.",
+  icon: <CastForEducation fontSize='large' />
 },
 
 
