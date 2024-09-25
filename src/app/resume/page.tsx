@@ -26,7 +26,7 @@ const timeline_education:timeline[] = [
   },
   {
     title: 'Jagatdal Chashma - I - Rahmat High School H.S',
-    time:'2017-1019',
+    time:'2017-2019',
     desc: `Successfully completed the 12th standard with a focus on Physics, Chemistry, and Mathematics. `,
   }
 ]
@@ -35,7 +35,7 @@ const timeline_education:timeline[] = [
 const timeline_internship:timeline[]=[
   {
     title: 'Teaching Assistant',
-    time:'2023 (3 month)',
+    time:'Oct,2023 - Dec,2023 ',
     desc: ` - Assisting in conducting lectures, grading assignments, and providing constructive feedback to students.`,
   },
   {
