@@ -35,12 +35,12 @@ const timeline_education:timeline[] = [
 const timeline_internship:timeline[]=[
   {
     title: 'Teaching Assistant',
-    time:'2023(3 month',
+    time:'2023 (3 month)',
     desc: ` - Assisting in conducting lectures, grading assignments, and providing constructive feedback to students.`,
   },
   {
     title: 'Frontend Developer',
-    time:'2024(currently)',
+    time:'Jan,2024 - Present',
     desc: `As a Frontend Developer Intern, I have actively contributed to the development and enhancement of web applications, ensuring they are user-friendly and visually appealing.`,
   }
 ]
@@ -194,7 +194,7 @@ const TimeLine = ({ title, icon, timelinear }: TimeLinePropsType) => {
           timelinear.map((timeline, i) => (
             <li key={i} className="relative ml-16 md:ml-24 mb-10 timeline-item after:-left-[40px] md:after:-left-[75px] before:-left-[38px] md:before:-left-[73px]">
               <h2 className="mb-1">{timeline.title}</h2>
-              <span className="mb-1 text-slate-200">-{timeline.time}</span>
+              <span className="mb-1 text-slate-200">{timeline.time}</span>
               <p className="font-light line-clamp-0 text-slate-400 text-base">{timeline.desc}</p>
             </li>
           ))
